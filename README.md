@@ -9,6 +9,7 @@ tox --recreate
 
 ## Build wheel file
 ```bash
+pip install build
 python -m build
 ```
 A wheel file will be created in the `dist` directory. It can use to install the package or upload to PyPI.
