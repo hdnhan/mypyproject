@@ -1,5 +1,6 @@
 ## Build python binding for C++ code
 ```bash
+pip install cmake pybind11
 cmake . -B build
 cmake --build build
 ```
