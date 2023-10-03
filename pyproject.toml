@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools", "cmake==3.27.6", "pybind11==2.11.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "myproject"
+version = "0.1.0"
+requires-python = ">=3.8"
+authors = [{ name = "Nhan Ho", email = "hdnhan28@gmail.com" }]     # Optional
+maintainers = [{ name = "Nhan Ho", email = "hdnhan28@gmail.com" }] # Optional
+description = "My first project"                                   # Optional
+license = { file = "LICENSE" }                                     # Optional
+readme = "README.md"                                               # Optional
+dependencies = ["numpy>=1.21"]
+[project.optional-dependencies]
+dev = []
+test = ["pytest==7.4.2", "pytest-cov==4.1.0"]
+
+[tool.setuptools]
+py-modules = []
+
+[project.urls]
+"Homepage" = "https://github.com/pypa/sampleproject"
+"Bug Reports" = "https://github.com/pypa/sampleproject/issues"
+"Funding" = "https://donate.pypi.org"
+"Say Thanks!" = "http://saythanks.io/to/example"
+"Source" = "https://github.com/pypa/sampleproject/"
