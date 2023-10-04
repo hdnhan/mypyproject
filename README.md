@@ -2,7 +2,7 @@ Read more at [pypa/sampleproject](https://github.com/pypa/sampleproject)
 
 ## Test package
 ```bash
-conda create -n myproject python=3.8 - y && conda activate myproject
+conda create -n myproject python=3.8 -y && conda activate myproject
 pip install tox
 tox --recreate
 ```
