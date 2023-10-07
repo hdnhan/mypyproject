@@ -1,0 +1,12 @@
+[run]
+branch = true
+omit = 
+    *_pb2.py
+    *_pb2_grpc.py
+
+[report]
+exclude_also =
+    raise AssertionError
+    raise NotImplementedError
+    if 0:
+    if __name__ == "__main__":
