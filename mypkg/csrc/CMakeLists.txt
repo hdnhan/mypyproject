@@ -14,16 +14,16 @@ execute_process(
     OUTPUT_STRIP_TRAILING_WHITESPACE
 )
 find_package(pybind11 CONFIG REQUIRED)
-set(MODULE_NAME multiply_cpp_impl)
+set(MODULE_NAME cpp_impl)
 pybind11_add_module(${MODULE_NAME} src/bindings.cpp)
 
-set(MULTIPLY_EXT multiply_ext)
-add_library(${MULTIPLY_EXT} src/multiply.cpp)
-target_include_directories(${MULTIPLY_EXT} PUBLIC include)
-set_target_properties(${MULTIPLY_EXT} PROPERTIES POSITION_INDEPENDENT_CODE ON)
+set(EXT_NAME ext_name)
+add_library(${EXT_NAME} src/core.cpp)
+target_include_directories(${EXT_NAME} PUBLIC include)
+set_target_properties(${EXT_NAME} PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 target_link_libraries(
     ${MODULE_NAME}
     PRIVATE
-    ${MULTIPLY_EXT}
+    ${EXT_NAME}
 )

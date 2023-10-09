@@ -7,9 +7,9 @@ from setuptools.command.build_ext import build_ext
 
 
 class CMakeExtension(Extension):
-    def __init__(self, name: str, source_dir: str) -> None:
+    def __init__(self, name: str, csrc_dir: str) -> None:
         super().__init__(name, sources=[])
-        self.source_dir = os.fspath(Path(source_dir).resolve())
+        self.csrc_dir = os.fspath(Path(csrc_dir).resolve())
 
 
 class CMakeBuild(build_ext):
@@ -32,17 +32,12 @@ class CMakeBuild(build_ext):
             build_args = ["--config", config, "--", "-j4"]
 
             os.chdir(build_temp)  # change current working directory
-            self.spawn(["cmake", ext.source_dir] + cmake_args)
+            self.spawn(["cmake", ext.csrc_dir] + cmake_args)
             self.spawn(["cmake", "--build", "."] + build_args)
-            print(build_args)
-            # Run C++ unit test here.
-            # self.spawn([ str('tests/cpp_tests') ])
-            # Troubleshooting: if fail on line above then delete all possible
-            # temporary CMake files including "CMakeCache.txt" in top level dir.
             os.chdir(cwd)
 
 
 setup(
-    ext_modules=[CMakeExtension(name="myproject.multiply_cpp_impl", source_dir="myproject/cpp")],
+    ext_modules=[CMakeExtension(name="pysample.cpp_impl", csrc_dir="csrc")],
     cmdclass={"build_ext": CMakeBuild},
 )

@@ -1,9 +1,14 @@
 [build-system]
-requires = ["setuptools==68.0.0", "cmake==3.27.6", "pybind11==2.11.1"]
+requires = [
+    "setuptools==68.0.0",
+    "setuptools-rust==1.7.0",
+    "cmake==3.27.6",
+    "pybind11==2.11.1",
+]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "myproject"
+name = "pysample"
 version = "0.1.0"
 requires-python = ">=3.8"
 authors = [{ name = "Nhan Ho", email = "hdnhan28@gmail.com" }]     # Optional
@@ -22,4 +27,10 @@ homepage = "https://github.com/pypa/sampleproject"
 source = "https://github.com/pypa/sampleproject/"
 
 [tool.setuptools]
-py-modules = []
+packages = ["pysample"]
+
+# Rust, more detailed at: https://setuptools-rust.readthedocs.io/en/latest/reference.html
+[[tool.setuptools-rust.ext-modules]]
+target = "pysample.rust_impl" # match in Cargo.toml
+path = "rustsrc/Cargo.toml"
+debug = false
